@@ -41,3 +41,7 @@ La máquina virtual utiliza un adaptador de red en modo NAT.
 
 Durante la instalación se obtuvo una dirección IP mediante DHCP,
 permitiendo la conexión a Internet para la descarga de paquetes y actualizaciones.
+
+## Snapshot inicial
+Antes de pasar a la instalación de Splunk se ha creado un snapshot de la máquina para recuperar el estado inicial del sistema en caso de fallos durante la instalación. 
+![Snapshot](screenshots/image-4.png)

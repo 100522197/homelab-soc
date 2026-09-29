@@ -54,4 +54,27 @@ Desde el servidor de Ubuntu se puede comprobar que la transferencia de archivo s
 
 ![scp](screenshots/image-12.png)
 
-El siguiente paso es instalar Splunk Enterprise: 
+El siguiente paso es instalar Splunk Enterprise, con el siguiente comando, se desempaqueta y se instala Splunk: 
+```bash
+sudo dpkg -i splunk-10.4.3-4174a2deda5d-linux-amd64.deb
+```
+
+Una vez instalado, se ejecutó el siguiente comando para aceptar la licencia de prueba de Splunk: 
+```bash
+sudo -u splunk /opt/splunk/bin/splunk start --accept-license
+```
+
+![instalación de splunk](screenshots/image-13.png)
+
+## Acceso a Splunk Web desde Windows
+Al intentar abrir la interfaz web desde Windows, el navegador rechazaba la conexión. Comprobé que Splunk seguía ejecutándose en Ubuntu, pero en VirtualBox solo tenía configurado el reenvío de puertos para SSH.
+
+Añadí una segunda regla para acceder a Splunk Web:
+
+![regla de reenvío de puertos](screenshots/image-14.png)
+
+Después de guardar la regla, el acceso seguía fallando. Apagué y volví a encender la máquina virtual e inicié Splunk de nuevo:
+```bash
+sudo -u splunk /opt/splunk/bin/splunk start 
+```
+Tras estos pasos, pude acceder desde el navegador de Windows a http://127.0.0.1:8000.

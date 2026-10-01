@@ -36,3 +36,62 @@ Los pasos para obtener el instalador son:
 4. Guardar el archivo ISO en el equipo anfitrión.
 
 La ISO se cargará en VirtualBox como medio de instalación de la nueva máquina virtual. No es necesario crear un USB de instalación.
+
+## Configuración de la máquina 
+Se configuró la máquina virtual con los siguientes recursos:
+
+|        Recurso         | Configuración  |
+|------------------------|----------------|
+|      Memoria RAM       | 4096 MB (4 GB) |
+| Procesadores virtuales |        2       |
+|      Firmware EFI      |   Habilitado   |
+
+Esta asignación inicial permitirá probar el funcionamiento de Windows junto al servidor Ubuntu con Splunk.
+
+Instalación de Windows
+
+Se creó una máquina virtual Windows para utilizarla como endpoint monitorizado dentro del laboratorio.
+Durante la configuración inicial de Windows se utilizó una cuenta local en lugar de una cuenta de Microsoft.
+
+## Sysmon 
+A continuación, se instalará Sysmon en la máquina Windows para obtener mayor visibilidad sobre la actividad del sistema.
+
+Permite registrar eventos como:
+- Creación de procesos
+- Conexiones de red
+- Creación y modificación de archivos
+- Actividad relacionada con PowerShell
+- Cambios relevantes en el sistema
+
+Los eventos generados por Sysmon se utilizarán posteriormente en Splunk para crear búsquedas y detecciones.
+
+## Descarga de Sysmon
+
+Sysmon se descargó desde la página oficial de Microsoft Sysinternals.
+
+Versión utilizada: v15.22
+
+Al descomprimir el zip descargado: 
+![Contenido sysmon](screenshots/image-16.png)
+
+## Instalación de Sysmon
+Sysmon se instaló desde una consola CMD ejecutada como administrador.
+
+Primero se accedió al directorio donde se encuentran los ejecutables:
+
+```cmd
+cd C:\Tools\Sysmon
+```
+
+Después se ejecutó la instalación:
+```cmd
+Sysmon64.exe -accepteula -i
+```
+## Comprobación de instalación
+Se comprobó el funcionamiento de Sysmon mediante el Visor de eventos (Event Viewer) de Windows.
+
+Los eventos generados por Sysmon se encuentran en:
+
+Registros de aplicaciones y servicios → Microsoft → Windows → Sysmon → Operational
+
+![sysmon](screenshots/image-18.png)

@@ -95,3 +95,22 @@ Los eventos generados por Sysmon se encuentran en:
 Registros de aplicaciones y servicios → Microsoft → Windows → Sysmon → Operational
 
 ![sysmon](screenshots/image-18.png)
+
+## Instalación de Splunk Universal Forwarder 
+Slunk Universal Forwarder se encargará de enviar los eventos de Windows y Sysmon desde SOC-Windows al servidor SOC-Splunk.
+
+### Descarga
+
+Desde la máquina virtual SOC-Windows, accedí a la página oficial:
+https://www.splunk.com/en_us/download/universal-forwarder.html
+
+Una vez instalado, el siguiente paso fue realizar la configuración e instalación. 
+
+## Instalación 
+
+Durante la instalación se seleccionó la recogida de los registros de Windows **Application**, **Security** y **System**. También se recogerán los eventos de **Sysmon** para analizar la creación de procesos y detectar actividad sospechosa.
+
+![configuracion splunk forwarder](screenshots/image-19.png)
+
+Una vez instalado, se realizó una verificación: 
+![verificacion splunk forwarder](screenshots/image-20.png)
